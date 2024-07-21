@@ -17,12 +17,13 @@ import card from '../../assets/elements.jpg';
 import gift from '../../assets/gift.jpg'
 import { LinearGradient } from "expo-linear-gradient";
 import Slider from "../components/Slider";
+import Bills from "../components/Bills";
 export default function Home() {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   return (
     <LinearGradient
-      colors={["#8B52FF", "#F7F4FF", "#FFFFFF"]}
+      colors={["#8B52FF", "#F7F4FF", "#F7F4FF"]}
       className="h-full"
     >
       <View className="items-center  justify-between flex-row  h-[180px] px-4">
@@ -117,6 +118,11 @@ export default function Home() {
       </View>
       <View className='px-4 mt-6 w-[97%] mx-auto '>
         <Slider />
+
+      </View>
+
+      <View className='px-4 mt-12 w-full bg-white w-[90%] rounded-lg h-[150px] mx-auto '>
+   <Bills />
 
       </View>
     </LinearGradient>
