@@ -11,7 +11,8 @@ import {
 import { Video, ResizeMode } from "expo-av";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import profile from "../../assets/profile.png";
-import qrcode from "../../assets/qr-code.png";
+import dollar from "../../assets/dollar.jpg";
+import coin from '../../assets/coins.jpg'
 import { LinearGradient } from "expo-linear-gradient";
 export default function Home() {
   const video = React.useRef(null);
@@ -91,10 +92,18 @@ export default function Home() {
 
       <View className='px-4 items-center flex-row h-[80px] w-[90%] bg-white mt-5 mx-auto justify-between rounded-lg'>
         <View className='grid'>
+        <Image
+                source={dollar}
+                className="h-[24px] w-[24px] items-center  "
+              />
           <Text>Card</Text>
         </View>
 
-        <View>
+        <View className='grid'>
+        <Image
+                source={coin}
+                className="h-[24px] w-[24px] items-center  "
+              />
           <Text>Card</Text>
         </View>
 
