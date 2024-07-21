@@ -9,6 +9,7 @@ import Wallet from './app/tabs/Wallet';
 import Transaction from './app/tabs/Transaction';
 import Settings from './app/tabs/Settings';
 import ButtonTab from './app/navigation/ButtonTab';
+import BillPayment from './app/pages/BillPayment';
 
 
 const Stack = createNativeStackNavigator()
@@ -54,7 +55,18 @@ export default function App() {
         options={{headerShown: false}}
         >
 
+
         </Stack.Screen>
+
+        <Stack.Screen
+        name='BillPayment'
+        component={BillPayment}
+        options={{headerShown: false}}
+        >
+
+
+        </Stack.Screen>
+        
       </Stack.Navigator>
 
     </NavigationContainer>

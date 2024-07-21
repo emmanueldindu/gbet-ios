@@ -1,12 +1,14 @@
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import internet from "../../assets/internet.jpg";
 import school from "../../assets/school.jpg";
 import electricity from "../../assets/Outline.jpg";
 import more from "../../assets/more.jpg";
-
+import { useNavigation } from "@react-navigation/native";
 const Bills = () => {
+
+    const navigation = useNavigation()
   return (
     <View className="grid px-4 rounded-lg h-[150px] bg-white w-full">
       <View className="flex-row justify-between items-center p-3">
@@ -14,7 +16,7 @@ const Bills = () => {
           Bills payment
         </Text>
 
-        <View className="flex-row gap-x-2 items-center">
+        <TouchableOpacity className="flex-row gap-x-2 items-center" onPress={() => navigation.navigate('BillPayment')}>
           <Text className="text-center font-[500] ">Edit</Text>
           <Feather
             name="edit-2"
@@ -22,7 +24,7 @@ const Bills = () => {
             color={"#A5A1A1"}
             size={20}
           />
-        </View>
+        </TouchableOpacity>
       </View>
       <View className="bg-[#F0EFEF] mt-2 w-full h-[1px] "></View>
       <View className="items-center flex-row  bg-white mt-5 mx-auto w-full justify-between ">

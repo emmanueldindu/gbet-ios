@@ -1,148 +1,187 @@
 import * as React from "react";
+import { useRef } from "react";
 import {
   View,
   StyleSheet,
   Button,
   SafeAreaView,
-  TouchableOpacity,
+  ScrollView,
   Text,
   Image,
   StatusBar,
-  ScrollView,
+  TouchableOpacity,
 } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 import { Video, ResizeMode } from "expo-av";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import profile from "../../assets/profile.png";
+
 import dollar from "../../assets/dollar.jpg";
 import coin from "../../assets/coins.jpg";
-import card from '../../assets/elements.jpg';
-import gift from '../../assets/gift.jpg'
+import card from "../../assets/elements.jpg";
+import gift from "../../assets/gift.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import Slider from "../components/Slider";
 import Bills from "../components/Bills";
+import { Modalize } from "react-native-modalize";
 import Transactions from "../components/Transactions";
-
-
+import { useNavigation } from "@react-navigation/native";
 export default function Home() {
+  const modalizeRef = useRef(null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  };
+
+  const navigation = useNavigation();
 
   return (
-    <SafeAreaView>
-
+    // <SafeAreaView>
+    <GestureHandlerRootView>
       <ScrollView>
-    <LinearGradient
-      colors={["#8B52FF", "#F7F4FF", "#F7F4FF"]}
-      className="h-auto"
-    >
-      <View className="items-center  justify-between flex-row  h-[180px] px-4">
-        <View className="flex-row gap-x-3">
-          <TouchableOpacity>
-            <View className="h-12   rounded-full w-12 items-center ">
-              <Image
-                source={profile}
-                className="h-12 w-12 items-center rounded-full "
-              />
-            </View>
-          </TouchableOpacity>
+        <LinearGradient
+          colors={["#8B52FF", "#F7F4FF", "#F7F4FF"]}
+          className="h-auto"
+        >
+          <View className="items-center  justify-between flex-row  h-[180px] px-4">
+            <View className="flex-row gap-x-3">
+              <TouchableOpacity>
+                <View className="h-12   rounded-full w-12 items-center ">
+                  <Image
+                    source={profile}
+                    className="h-12 w-12 items-center rounded-full "
+                  />
+                </View>
+              </TouchableOpacity>
 
-          <TouchableOpacity>
-            <View className="grid i mt-2">
-              <View className="flex-row gap-x-1">
-                <Text className="text-gray-100">Welcome </Text>
+              <TouchableOpacity>
+                <View className="grid i mt-2">
+                  <View className="flex-row gap-x-1">
+                    <Text className="text-gray-100">Welcome </Text>
+                  </View>
+                  <Text className="text-md text-white">Martins Chidume</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View className="flex-row items-center gap-x-4">
+              <TouchableOpacity>
+                <View className="h-[25px]  rounded-lg w-[25px] items-center ">
+                  <Ionicons name="qr-code-outline" size={24} color={"white"} />
+                </View>
+              </TouchableOpacity>
+              <View className="h-12  rounded-lg w-12 items-center p-3">
+                <Feather name="bell" size={24} color={"white"} />
               </View>
-              <Text className="text-md text-white">Martins Chidume</Text>
             </View>
-          </TouchableOpacity>
-        </View>
-        <View className="flex-row items-center gap-x-4">
-          <TouchableOpacity>
-            <View className="h-[25px]  rounded-lg w-[25px] items-center ">
-              <Ionicons name="qr-code-outline" size={24} color={"white"} />
+          </View>
+
+          <View className="flex-row px-4 gap-x-7">
+            <View className="w-[90px] h-8 bg-white items-center  rounded-xl">
+              <Text className="text-sm item-center my-auto">Account</Text>
             </View>
-          </TouchableOpacity>
-          <View className="h-12  rounded-lg w-12 items-center p-3">
-            <Feather name="bell" size={24} color={"white"} />
-          </View>
-        </View>
-      </View>
 
-      <View className="flex-row px-4 gap-x-7">
-        <View className="w-[90px] h-8 bg-white items-center  rounded-xl">
-          <Text className="text-sm item-center my-auto">Account</Text>
-        </View>
+            <View className=" h-9    items-center p-2 rounded-xl">
+              <Text className="text-[#F1EBFF] text-sm">Rate</Text>
+            </View>
 
-        <View className=" h-9    items-center p-2 rounded-xl">
-          <Text className="text-[#F1EBFF] text-sm">Rate</Text>
-        </View>
-
-        <View className=" h-9  items-center p-2 rounded-xl">
-          <Text className="text-[#F1EBFF] text-sm">Discover</Text>
-        </View>
-      </View>
-
-      <View className="px-4 flex-row h-[120px] bg-white w-[90%] rounded-xl mx-auto justify-between mt-5">
-        <View className="grid w-[60%]  h-full p-4">
-          <View className="flex-row gap-x-2">
-            <Text className="text-sm font-[300]">Available asset balance</Text>
-            <Ionicons name="eye-outline" size={19} color={"black"} />
+            <View className=" h-9  items-center p-2 rounded-xl">
+              <Text className="text-[#F1EBFF] text-sm">Discover</Text>
+            </View>
           </View>
 
-          <View className="flex-row gap-x-2 mt-5 items-center">
-            <Text className="text-3xl font-semibold">90,000</Text>
-            <Text className="text-xs font-[300]">USD</Text>
-            <Ionicons name="chevron-down-outline" size={19} color={"black"} />
+          <View className="px-4 flex-row h-[120px] bg-white w-[90%] rounded-xl mx-auto justify-between mt-5">
+            <View className="grid w-[60%]  h-full p-4">
+              <View className="flex-row gap-x-2">
+                <Text className="text-sm font-[300]">
+                  Available asset balance
+                </Text>
+                <Ionicons name="eye-outline" size={19} color={"black"} />
+              </View>
+
+              <View className="flex-row gap-x-2 mt-5 items-center">
+                <Text className="text-3xl font-semibold">90,000</Text>
+                <TouchableOpacity className="flex-row gap-x-1" onPress={onOpen}>
+                  <Text className="text-xs font-[300]">USD</Text>
+                  <Ionicons
+                    name="chevron-down-outline"
+                    size={19}
+                    color={"black"}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View className="p-2">
+              <View className="bg-[#8B52FF] mt-12 rounded-xl items-center h-8 w-[90px]">
+                <Text className="text-white my-auto ">Add money</Text>
+              </View>
+            </View>
           </View>
-        </View>
 
-        <View className="p-2">
-          <View className="bg-[#8B52FF] mt-12 rounded-xl items-center h-8 w-[90px]">
-            <Text className="text-white my-auto ">Add money</Text>
+          <View className="px-6 items-center flex-row  h-[80px] w-[90%] bg-white mt-5 mx-auto justify-between rounded-lg">
+            <View className="grid items-center   gap-2">
+              <Image
+                source={dollar}
+                className="h-[24px] w-[24px] relative   items-center  "
+              />
+              <Text className="font-[500] text-center ">Withdraw</Text>
+            </View>
+
+            <View className="grid items-center gap-2 ">
+              <Image
+                source={coin}
+                className="h-[24px] w-[24px] items-center  "
+              />
+              <Text className="font-[500] text-center">Swap</Text>
+            </View>
+
+            <View className="grid items-center gap-2 ">
+              <Ionicons name="card" size={24} color={"#00BF63"} />
+
+              <Text className="font-[500] text-center">Card</Text>
+            </View>
+
+            <View className="grid gap-2 items-center">
+              <Image
+                source={gift}
+                className="h-[24px] w-[25px] items-center  "
+              />
+
+              <Text className="font-[500] text-center">Referral</Text>
+            </View>
           </View>
-        </View>
-      </View>
+          <View className="px-4 mt-6 w-[97%] mx-auto ">
+            <Slider />
+          </View>
 
-      <View className="px-6 items-center flex-row  h-[80px] w-[90%] bg-white mt-5 mx-auto justify-between rounded-lg">
-        <View className="grid items-center   gap-2">
-          <Image source={dollar} className="h-[24px] w-[24px] relative   items-center  " />
-          <Text className='font-[500] text-center '>Withdraw</Text>
-        </View>
+          <View className="px-4 mt-12 w-full  rounded-lg h-[170px] mx-auto ">
+            <Bills />
+          </View>
 
-        <View className="grid items-center gap-2 ">
-          <Image source={coin} className="h-[24px] w-[24px] items-center  " />
-          <Text className='font-[500] text-center' >Swap</Text>
-        </View>
+          <View className="px-4 m w-full  rounded-lg h-[250px] mx-auto ">
+            <Transactions />
+          </View>
+        </LinearGradient>
+        <Modalize ref={modalizeRef} snapPoint={550}>
+          <View className="w-full h-[500px]   p-2 bg-[#F7F4FF]">
+            <View className="p-4 mx-5 items-center flex-row gap-x-2 mt-3">
+              <Ionicons 
+              name="arrow-back-outline"
+              size={20}
+              color={'gray'}
 
-        <View className='grid items-center gap-2 '>
-        <Ionicons name="card" size={24} color={"#00BF63"} />
+              />
+              <Text>Available balance</Text>
 
-          <Text className='font-[500] text-center' >Card</Text>
-        </View>
+            </View>
 
-        <View className='grid gap-2 items-center'>
-        <Image source={gift} className="h-[24px] w-[25px] items-center  " />
-
-          <Text className='font-[500] text-center' >Referral</Text>
-        </View>
-      </View>
-      <View className='px-4 mt-6 w-[97%] mx-auto '>
-        <Slider />
-
-      </View>
-
-      <View className='px-4 mt-12 w-full  rounded-lg h-[170px] mx-auto '>
-   <Bills />
-
-      </View>
-
-      <View className='px-4 m w-full  rounded-lg h-[250px] mx-auto '>
-   <Transactions  />
-
-      </View>
-
-
-     
-    </LinearGradient>
-    </ScrollView>
-    </SafeAreaView>
+      <View className="bg-gray-300 mt-2 w-[95%] mx-auto h-[1px] "></View>
+          </View>
+        </Modalize>
+      </ScrollView>
+    </GestureHandlerRootView>
+    // </SafeAreaView>
   );
 }
 
