@@ -12,8 +12,11 @@ import { Video, ResizeMode } from "expo-av";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import profile from "../../assets/profile.png";
 import dollar from "../../assets/dollar.jpg";
-import coin from '../../assets/coins.jpg'
+import coin from "../../assets/coins.jpg";
+import card from '../../assets/elements.jpg';
+import gift from '../../assets/gift.jpg'
 import { LinearGradient } from "expo-linear-gradient";
+import Slider from "../components/Slider";
 export default function Home() {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
@@ -83,37 +86,37 @@ export default function Home() {
         </View>
 
         <View className="p-2">
-          <View className='bg-[#8B52FF] mt-12 rounded-xl items-center h-8 w-[90px]'>
-            <Text className='text-white my-auto '>Add money</Text>
+          <View className="bg-[#8B52FF] mt-12 rounded-xl items-center h-8 w-[90px]">
+            <Text className="text-white my-auto ">Add money</Text>
           </View>
         </View>
-
       </View>
 
-      <View className='px-4 items-center flex-row h-[80px] w-[90%] bg-white mt-5 mx-auto justify-between rounded-lg'>
-        <View className='grid'>
-        <Image
-                source={dollar}
-                className="h-[24px] w-[24px] items-center  "
-              />
-          <Text>Card</Text>
+      <View className="px-6 items-center flex-row  h-[80px] w-[90%] bg-white mt-5 mx-auto justify-between rounded-lg">
+        <View className="grid items-center   gap-2">
+          <Image source={dollar} className="h-[24px] w-[24px] relative   items-center  " />
+          <Text className='font-[500] text-center '>Withdraw</Text>
         </View>
 
-        <View className='grid'>
-        <Image
-                source={coin}
-                className="h-[24px] w-[24px] items-center  "
-              />
-          <Text>Card</Text>
+        <View className="grid items-center gap-2 ">
+          <Image source={coin} className="h-[24px] w-[24px] items-center  " />
+          <Text className='font-[500] text-center' >Swap</Text>
         </View>
 
-        <View>
-          <Text>Card</Text>
+        <View className='grid items-center gap-2 '>
+        <Ionicons name="card" size={24} color={"#00BF63"} />
+
+          <Text className='font-[500] text-center' >Card</Text>
         </View>
 
-        <View>
-          <Text>Card</Text>
+        <View className='grid gap-2 items-center'>
+        <Image source={gift} className="h-[24px] w-[25px] items-center  " />
+
+          <Text className='font-[500] text-center' >Referral</Text>
         </View>
+      </View>
+      <View className='px-4 mt-6 w-[97%] mx-auto '>
+        <Slider />
 
       </View>
     </LinearGradient>
