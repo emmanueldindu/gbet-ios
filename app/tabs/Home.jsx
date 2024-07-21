@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Text,
   Image,
+  StatusBar,
+  ScrollView,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import { Feather, Ionicons } from "@expo/vector-icons";
@@ -18,13 +20,18 @@ import gift from '../../assets/gift.jpg'
 import { LinearGradient } from "expo-linear-gradient";
 import Slider from "../components/Slider";
 import Bills from "../components/Bills";
+import Transactions from "../components/Transactions";
+
+
 export default function Home() {
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+
   return (
+    <SafeAreaView>
+
+      <ScrollView>
     <LinearGradient
       colors={["#8B52FF", "#F7F4FF", "#F7F4FF"]}
-      className="h-full"
+      className="h-auto"
     >
       <View className="items-center  justify-between flex-row  h-[180px] px-4">
         <View className="flex-row gap-x-3">
@@ -121,11 +128,21 @@ export default function Home() {
 
       </View>
 
-      <View className='px-4 mt-12 w-full bg-white w-[90%] rounded-lg h-[150px] mx-auto '>
+      <View className='px-4 mt-12 w-full  rounded-lg h-[170px] mx-auto '>
    <Bills />
 
       </View>
+
+      <View className='px-4 m w-full  rounded-lg h-[250px] mx-auto '>
+   <Transactions  />
+
+      </View>
+
+
+     
     </LinearGradient>
+    </ScrollView>
+    </SafeAreaView>
   );
 }
 

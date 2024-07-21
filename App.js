@@ -5,6 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import Layout from './app/Layout';
 
 import Home from './app/tabs/Home';
+import Wallet from './app/tabs/Wallet';
+import Transaction from './app/tabs/Transaction';
+import Settings from './app/tabs/Settings';
+import ButtonTab from './app/navigation/ButtonTab';
 
 
 const Stack = createNativeStackNavigator()
@@ -15,7 +19,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen
         name='index'
-        component={Layout}
+        component={ButtonTab}
         options={{headerShown: false}}
         >
 
@@ -23,6 +27,30 @@ export default function App() {
         <Stack.Screen
         name='Home'
         component={Home}
+        options={{headerShown: false}}
+        >
+
+        </Stack.Screen>
+
+        <Stack.Screen
+        name='Wallet'
+        component={Wallet}
+        options={{headerShown: false}}
+        >
+
+        </Stack.Screen>
+
+        <Stack.Screen
+        name='Transaction'
+        component={Transaction}
+        options={{headerShown: false}}
+        >
+
+        </Stack.Screen>
+
+        <Stack.Screen
+        name='Settings'
+        component={Settings}
         options={{headerShown: false}}
         >
 
