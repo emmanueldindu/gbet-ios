@@ -3,7 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Layout from './app/Layout';
-import Onboard from './app/onboard/Onboard';
+
+import Home from './app/tabs/Home';
 
 
 const Stack = createNativeStackNavigator()
@@ -20,8 +21,8 @@ export default function App() {
 
         </Stack.Screen>
         <Stack.Screen
-        name='Onboard'
-        component={Onboard}
+        name='Home'
+        component={Home}
         options={{headerShown: false}}
         >
 

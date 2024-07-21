@@ -6,19 +6,20 @@ import { useNavigation } from "@react-navigation/native";
 import logo from '../assets/gbet.png'
 import splashimg from '../assets/splashimg.png'
 
+
 const Layout = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-        navigation.navigate('Onboard');
-      }, 5000); // Navigate after 3 seconds
+        navigation.navigate('Home');
+      }, 1000); // Navigate after 3 seconds
   
       return () => clearTimeout(timer); // Cleanup the timer
   }, []);
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFF" />
+      <StatusBar barStyle="light" backgroundColor="" />
       <SafeAreaView className="">
         <View className=" h-full w-full justify-center items-center px-4 ">
 

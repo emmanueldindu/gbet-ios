@@ -22,6 +22,9 @@ module.exports = {
           100: "#CDCDE0",
         },
       },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(to bottom, #6E2CF0, #AA67FE)', // Replace with your colors
+      },
       fontFamily: {
         pthin: ["Poppins-Thin", "sans-serif"],
         pextralight: ["Poppins-ExtraLight", "sans-serif"],
