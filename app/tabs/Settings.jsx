@@ -19,10 +19,17 @@ import about from "../../assets/about.png";
 const Settings = () => {
   return (
     <LinearGradient
-      colors={["#8B52FF", "#F7F4FF", "#F7F4FF", "#F7F4FF", "#F7F4FF"]}
+      colors={[
+        "#8B52FF",
+        "#F7F4FF",
+        "#F7F4FF",
+        "#F7F4FF",
+        "#F7F4FF",
+        "#F7F4FF",
+      ]}
       className="h-full "
     >
-      <View className="items-center mt-3 justify-between flex-row   h-[150px] px-4">
+      <View className="items-center mt-3 justify-between flex-row h-[140px] px-4">
         <View className="flex-row gap-x-3">
           <TouchableOpacity>
             <View className="h-12   rounded-full w-12 items-center ">
@@ -57,7 +64,7 @@ const Settings = () => {
         </View>
       </View>
 
-      <View className="items-center  justify-between flex-row  h-[100px] px-4">
+      <View className="items-center  justify-between flex-row  h-[90px] px-4">
         <View className="grid w-[60%]  h-full p-4">
           <View className="flex-row gap-x-2">
             <Text className="text-sm font-[300]">Available asset balance</Text>
@@ -234,6 +241,18 @@ const Settings = () => {
           </TouchableOpacity>
 
           <View className="bg-[#F0EFEF]  mt-2 w-full h-[1px] "></View>
+        </View>
+      </View>
+
+      <View className="grid px-4 rounded-lg h-[60px] justify-center items-center  bg-white w-[90%] mx-auto mt-5 ">
+        <View className="flex-row gap-x-2 items-center ">
+          <Feather
+            name="log-out"
+            className="items-center"
+            color={"#A5A1A1"}
+            size={22}
+          />
+          <Text className="text-[#A5A1A1]">Logout</Text>
         </View>
       </View>
     </LinearGradient>
