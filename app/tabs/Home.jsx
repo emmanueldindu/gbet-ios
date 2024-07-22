@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { RadioButton } from 'react-native-paper';
 
 import { Video, ResizeMode } from "expo-av";
 import { Feather, Ionicons } from "@expo/vector-icons";
@@ -35,7 +36,7 @@ export default function Home() {
   };
 
   const navigation = useNavigation();
-
+  const [selected, setSelected] = useState('USD');
   return (
     // <SafeAreaView>
     <GestureHandlerRootView>
@@ -177,6 +178,34 @@ export default function Home() {
             </View>
 
       <View className="bg-gray-300 mt-2 w-[95%] mx-auto h-[1px] "></View>
+
+      <View style={styles.container}>
+      {/* <Text style={styles.title}>Available balance</Text> */}
+      <TouchableOpacity
+        style={[styles.option, selected === 'USD' && styles.selectedOption]}
+        onPress={() => setSelected('USD')}
+      >
+        <Text style={styles.text}>900,000 USD</Text>
+        <RadioButton
+          value="USD"
+          status={selected === 'USD' ? 'checked' : 'unchecked'}
+          onPress={() => setSelected('USD')}
+          color="#8B50FF"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.option, selected === 'TRY' && styles.selectedOption]}
+        onPress={() => setSelected('TRY')}
+      >
+        <Text style={styles.text}>900,000 TRY</Text>
+        <RadioButton
+          value="TRY"
+          status={selected === 'TRY' ? 'checked' : 'unchecked'}
+          onPress={() => setSelected('TRY')}
+          color="#8B50FF"
+        />
+      </TouchableOpacity>
+    </View>
           </View>
         </Modalize>
       </ScrollView>
@@ -189,5 +218,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: "center",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 20,
+    color: '#000',
+  },
+  option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 15,
+    borderWidth: 1,
+    borderColor: '#DDD',
+    borderRadius: 10,
+    marginBottom: 10,
+    backgroundColor: '#FFF',
+  },
+  selectedOption: {
+    borderColor: '#8B50FF',
+    borderWidth: 2,
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
   },
 });
