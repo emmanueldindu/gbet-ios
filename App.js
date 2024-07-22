@@ -10,6 +10,7 @@ import Transaction from './app/tabs/Transaction';
 import Settings from './app/tabs/Settings';
 import ButtonTab from './app/navigation/ButtonTab';
 import BillPayment from './app/pages/BillPayment';
+import Referral from './app/pages/Referral';
 
 
 const Stack = createNativeStackNavigator()
@@ -63,6 +64,19 @@ export default function App() {
         component={BillPayment}
         options={{headerShown: false}}
         >
+
+          
+
+
+        </Stack.Screen>
+
+        <Stack.Screen
+        name='Referral'
+        component={Referral}
+        options={{headerShown: false}}
+        >
+
+          
 
 
         </Stack.Screen>

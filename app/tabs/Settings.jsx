@@ -16,7 +16,11 @@ import share from "../../assets/share.png";
 import star from "../../assets/star.png";
 import help from "../../assets/help.png";
 import about from "../../assets/about.png";
+import { useNavigation } from "@react-navigation/native";
+
 const Settings = () => {
+
+    const navigation = useNavigation()
   return (
     <LinearGradient
       colors={[
@@ -164,7 +168,7 @@ const Settings = () => {
         </View>
 
         <View>
-          <TouchableOpacity className="flex-row justify-between items-center p-3">
+          <TouchableOpacity className="flex-row justify-between items-center p-3" onPress={() => navigation.navigate('Referral')}>
             <View className="flex-row gap-x-2 items-center">
               <Image
                 source={share}
@@ -254,6 +258,10 @@ const Settings = () => {
           />
           <Text className="text-[#A5A1A1]">Logout</Text>
         </View>
+      </View>
+
+      <View className='mt-2 w-full justify-center items-center p-2'>
+        <Text className="text-[#A5A1A1] text-xs">Version 2.0</Text>
       </View>
     </LinearGradient>
   );
